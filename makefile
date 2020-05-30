@@ -3,11 +3,11 @@
 IMAGE := develop
 VERSION := latest
 
-all:
+all: docker/Dockerfile
 	cd docker && make build
 	make build
 
-build: docker/Dockerfile
+build:
 	docker build . -t $(IMAGE):$(VERSION) --build-arg PASSWORD=$$(bash -c 'read -sp "Password: " pass; echo -e $$pass') --build-arg UID=$$(id -u)
 
 docker/Dockerfile:
