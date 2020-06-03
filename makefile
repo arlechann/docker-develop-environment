@@ -8,7 +8,7 @@ all: docker/Dockerfile
 	make build
 
 build:
-	docker build . -t $(IMAGE):$(VERSION) --build-arg PASSWORD=$$(bash -c 'read -sp "Password: " pass; echo -e $$pass') --build-arg UID=$$(id -u)
+	docker build . -t $(IMAGE):$(VERSION) --build-arg UID=$$(id -u)
 
 docker/Dockerfile:
 	git clone https://github.com/arlechann/docker-archlinux-yay docker
